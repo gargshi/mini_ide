@@ -95,4 +95,4 @@ session/
 .python-version
 
 #deploy script
-publish.sh # Deployment script
+publish.sh
