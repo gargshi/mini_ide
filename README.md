@@ -36,7 +36,7 @@ mini-ide/
 
 [![Download Latest](https://img.shields.io/github/v/release/gargshi/mini_ide?label=latest&color=blue)](https://github.com/gargshi/mini_ide/releases/latest)
 
-👉 [**Click here to download the latest release**](https://github.com/gargshi/mini_ide/releases/latest)
+<!-- 👉 [**Click here to download the latest release**](https://github.com/gargshi/mini_ide/releases/latest) -->
 
 ### ⚙️ Installation
 
