@@ -20,14 +20,13 @@ It’s designed for quick scripting, prototyping, and learning — without the h
 
 ```
 mini-ide/
-├── main.py                # Python backend for runtime / logic
 ├── package.json           # Electron app metadata
 ├── main.js                # Electron main process
-├── preload.js             # Preload bridge for Python↔JS communication
-├── renderer/              # Frontend UI (HTML, CSS, JS)
-├── config/                # Local configuration
+├── renderer.js            # Electron renderer script
+├── style/                 # CSS files directory for styling
+├── config/                # Local configuration (created at runtime, ignored by git)
 │   ├── config.example.json
-│   └── user_config.json   # (ignored by git)
+│   └── user_config.json  
 ├── dist/                  # Electron build output (ignored)
 └── README.md
 ```
@@ -82,6 +81,14 @@ Use the `config/` folder for runtime settings.
 | `user_config.json` | Actual user config (ignored by Git) |
 
 Tip: copy `config.example.json` → `user_config.json` to set your local preferences.
+
+---
+
+### Version info
+
+| Version | Description                              |
+|---------|------------------------------------------|
+|  1.0.0  | basic file handling                      |
 
 ---
 
