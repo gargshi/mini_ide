@@ -1,0 +1,95 @@
+# ==============================
+# Node / Electron
+# ==============================
+
+# Dependency directories
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Electron build output
+dist/
+build/
+out/
+release/
+config/
+*.asar
+
+# Electron Builder cache
+**/electron-builder.yml
+**/electron-builder.json
+**/electron-builder.config.js
+**/.cache/
+**/.electron-builder/
+**/win-unpacked/
+**/mac/
+**/linux/
+**/*.dmg
+**/*.exe
+**/*.zip
+
+# ==============================
+# Python
+# ==============================
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.spec
+
+# Logs
+*.log
+
+# IDE config
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==============================
+# OS-specific
+# ==============================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ==============================
+# Custom project configs
+# ==============================
+
+# Local user config or runtime files
+config.json
+settings.json
+user_prefs.json
+
+# Temporary / runtime files
+temp/
+tmp/
+.cache/
+logs/
+session/
+
+# ==============================
+# Optional - if you use PythonAnywhere or similar hosting
+# ==============================
+
+.python-version

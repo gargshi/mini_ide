@@ -1,0 +1,128 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	/* Sidebar | Divider | Editor */
+	height: 100vh;
+	font-family: monospace;
+	overflow: hidden;
+}
+
+/* Sidebar */
+#sidebar {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+	font-size: 12px;
+	width: 250px;
+	min-width: 150px;
+	max-width: 600px;
+	background: #262424;
+	color: #ddd;
+	/*border-right: 1px solid #ccc;*/
+	overflow: auto;
+	padding: 5px;
+}
+
+/* Divider */
+#divider {
+	width: 5px;
+	background: #62038b;
+	border: 1px solid rgb(39, 39, 39);
+	cursor: col-resize;
+	/* Make sure it sits above neighbors so it receives mouse events */
+	position: relative;
+	z-index: 10;
+}
+
+/* Editor container */
+#editor-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+/* Tabs */
+#tabs {
+	display: flex;
+	background: #262424;
+	color: #ddd;
+	border-bottom: 1px solid #aaa;
+	overflow-x: auto;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.tab {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+	font-size: 12px;
+	padding: 2px 5px;
+	cursor: pointer;
+	border-right: 1px solid #aaa;
+	background: #262424;
+	color: #ddd;
+	flex-shrink: 0;
+}
+
+.tab.active {
+	background: #323232;
+	color: #ffffff;
+	font-weight: bold;
+	border: 1px solid #1f6f22;
+}
+
+.tab .close {
+	margin-left: 5px;
+	color: red;
+	cursor: pointer;
+}
+
+/* Editor */
+#editor {
+	flex: 1;
+	font-size: 12px;
+	font-family: 'Consolas';
+	padding: 10px;
+	border: none;
+	outline: none;
+	resize: none;
+	background-color: #1e1e1e;
+	color: #d4d4d4;
+}
+
+/* Tree */
+#sidebar ul {
+	list-style: none;
+	padding-left: 15px;
+	margin: 2px 0;
+}
+
+.folder,
+.file {
+	cursor: pointer;
+	margin: 2px 0;
+}
+
+#statusbar {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+	font-size: 12px;
+	background: #262424;
+	color: #ddd;
+	border-top: 1px solid #aaa;
+	padding: 2px 5px;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#statusbar #cursor-position {
+	width: fit-content;
+}
+
+#statusbar span {
+	flex: 1;
+}

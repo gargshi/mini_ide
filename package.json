@@ -1,0 +1,45 @@
+{
+  "name": "mini-ide",
+  "version": "1.0.0",
+  "description": "a barebones code editor built with electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "editor",
+    "electron",
+    "mini-ide"
+  ],
+  "author": "Shivam Garg",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^32.3.3",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.shivam.miniide",
+    "productName": "Mini IDE",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "renderer.js",
+      "config/**",
+      "style/**"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
+  },
+  "dependencies": {
+    "trash": "^7.2.0"
+  }
+}

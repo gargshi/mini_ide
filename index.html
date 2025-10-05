@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Mini IDE</title>
+	<!-- <link rel="stylesheet" href="style/index.css" /> -->
+	<link rel="stylesheet" href="style/index_remastered.css" />
+</head>
+
+<body>
+	<div id="sidebar">No folder open</div>
+	<div id="divider" title="Drag to resize"></div>
+	<div id="editor-container">
+		<div id="config_debug"></div>
+		<div id="tabs"></div>
+		<textarea id="editor" spellcheck="false"></textarea>
+		<div id="statusbar">
+			<span id="cursor-position">Ln 1, Col 1</span>
+			<span id="status">Ready</span>
+		</div>
+	</div>
+
+	<!-- your renderer logic -->
+	<script src="renderer.js"></script>
+
+	<!-- robust resizer -->
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			const sidebar = document.getElementById('sidebar');
+			const divider = document.getElementById('divider');
+
+			let isResizing = false;
+			let startX = 0;
+			let startWidth = 0;
+
+			divider.addEventListener('mousedown', (e) => {
+				isResizing = true;
+				startX = e.clientX;
+				startWidth = sidebar.offsetWidth;
+
+				// Visual + UX niceties
+				document.body.style.cursor = 'col-resize';
+				divider.style.backgroundColor = 'black';
+				document.body.style.userSelect = 'none';
+				e.preventDefault();
+			});
+
+			document.addEventListener('mousemove', (e) => {
+				if (!isResizing) return;
+				const delta = e.clientX - startX;
+				let newWidth = startWidth + delta;
+
+				// clamp to min/max
+				newWidth = Math.max(150, Math.min(600, newWidth));
+				sidebar.style.width = newWidth + 'px';
+			});
+
+			document.addEventListener('mouseup', () => {
+				if (!isResizing) return;
+				isResizing = false;
+				document.body.style.cursor = '';
+				divider.style.backgroundColor = 'var(--color-divider)';
+				document.body.style.userSelect = '';
+			});
+		});
+	</script>
+</body>
+
+</html>

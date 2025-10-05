@@ -1,0 +1,198 @@
+:root {
+	/* Base UI colors */
+	--color-bg: #1e1e1e;
+	--color-bg-light: #2d2d2d;
+	--color-sidebar: #272822;
+	--color-divider: #3e3d32;
+	--color-statusbar: #2d2d2d;
+
+	/* Text colors */
+	--color-text: #d4d4d4;
+	--color-text-light: #ccc;
+	--color-text-muted: #888;
+
+	/* Accent colors */
+	--color-accent: #3399ff;
+	--color-tab-active: #1e1e1e;
+	--color-tab-hover: #3c3c3c;
+
+	/* Warnings/errors */
+	--color-error: #ff5555;
+	--color-warning: #ffcc00;
+	--color-success: #33cc66;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	height: 100vh;
+	font-family: monospace;
+	overflow: hidden;
+	background: var(--color-bg);
+	/* Sublime background */
+	color: #d4d4d4;
+}
+
+/* Sidebar */
+#sidebar {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+	font-size: 14px;
+	width: 250px;
+	min-width: 150px;
+	max-width: 600px;
+	background: var(--color-sidebar);
+	/* Sublime sidebar dark */
+	color: #ddd;
+	overflow: auto;
+	padding: 5px;
+	border-right: 1px solid #1a1a1a;
+
+}
+
+#sidebar li{
+	padding-left: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background: #3d3d3d;
+}
+
+#sidebar li.selected {
+	background: #3d3d3d;
+	border-left: 4px solid greenyellow;
+}
+
+#sidebar li.selected .folder:hover {
+	border-left: 4px solid orange;
+}
+
+#sidebar li.selected .file:hover {
+	border-left: 4px solid var(--color-accent);
+}
+
+
+
+
+
+
+
+/* Divider */
+#divider {
+	width: 4px;
+	background: var(--color-divider);
+	/* subtle Sublime divider */
+	cursor: col-resize;
+	position: relative;
+	z-index: 10;
+}
+
+/* Editor container */
+#editor-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background: var(--color-bg);
+}
+
+/* Tabs */
+#tabs {
+	display: flex;
+	background: #2d2d2d;
+	color: #ccc;
+	border-bottom: 1px solid #1a1a1a;
+	overflow-x: auto;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.tab {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+	font-size: 12px;
+	padding: 4px 10px;
+	cursor: pointer;
+	border-right: 1px solid #1a1a1a;
+	background: #2d2d2d;
+	color: #bbb;
+}
+
+.tab.active {
+	background: #1e1e1e;
+	color: #fff;
+	font-weight: normal;
+	border-top: 2px solid #3399ff;
+	/* subtle highlight like Sublime */
+	border-right: 1px solid #1a1a1a;
+}
+
+/* Editor */
+#editor {
+	flex: 1;
+	font-size: 13px;
+	font-family: 'Consolas', 'Courier New', monospace;
+	padding: 10px;
+	border: none;
+	outline: none;
+	resize: none;
+	background-color: #1e1e1e;
+	color: #f8f8f2;
+	/* Sublime default fg */
+}
+
+/* Tree */
+#sidebar ul {
+	list-style: none;
+	padding-left: 15px;
+	margin: 2px 0;
+}
+
+.folder,
+.file {
+	cursor: pointer;
+	vertical-align: middle;
+	margin: 2px 0;
+	color: #ddd;
+}
+
+.folder svg,
+.file svg {
+	vertical-align: middle;
+	margin-right: 4px;
+}
+
+/* Status bar */
+#statusbar {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
+	font-size: 12px;
+	background: #2d2d2d;
+	/* Sublime-style lighter than editor */
+	color: var(--color-text-muted);
+	border-top: 1px solid #1a1a1a;
+	padding: 2px 8px;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Status message area */
+#statusbar #status {
+	flex: 1;
+	text-align: left;
+	padding-left: 10px;
+	/* color: #bbb; */
+}
+
+/* Cursor position (right side) */
+#statusbar #cursor-position {
+	width: fit-content;
+	/* color: #bbb; */
+	text-align: center;
+	padding-right: 10px;
+	border-right: 1px solid #464444;
+	/* display: none; */
+}
