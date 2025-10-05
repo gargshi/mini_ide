@@ -37,7 +37,7 @@ mini-ide/
 
 #### 1 Clone the repo
 ```bash
-git clone https://github.com/yourusername/mini-ide.git
+git clone https://github.com/gargshi/mini-ide.git
 cd mini-ide
 ```
 
@@ -73,14 +73,9 @@ Output goes to the `/dist/` folder (ignored in Git).
 
 ### Configuration
 
-Use the `config/` folder for runtime settings.
+Use the `config/` folder for runtime settings. These are created at runtime when the released software is run for the first time.
 
-| File | Description |
-|------|--------------|
-| `config.example.json` | Template file (safe to commit) |
-| `user_config.json` | Actual user config (ignored by Git) |
-
-Tip: copy `config.example.json` → `user_config.json` to set your local preferences.
+The config folder contains files storing telemetry and keybindings in json format files.
 
 ---
 
