@@ -34,9 +34,9 @@ mini-ide/
 ---
 ## 📦 Download Latest Version
 
-[![Download Latest](https://img.shields.io/github/v/release/gargshi/mini-ide?label=latest&color=blue)](https://github.com/gargshi/mini-ide/releases/latest)
+[![Download Latest](https://img.shields.io/github/v/release/gargshi/mini_ide?label=latest&color=blue)](https://github.com/gargshi/mini_ide/releases/latest)
 
-👉 [**Click here to download the latest release**](https://github.com/gargshi/mini-ide/releases/latest)
+👉 [**Click here to download the latest release**](https://github.com/gargshi/mini_ide/releases/latest)
 
 ### ⚙️ Installation
 
@@ -45,7 +45,7 @@ mini-ide/
 
 #### 1 Clone the repo
 ```bash
-git clone https://github.com/gargshi/mini-ide.git
+git clone https://github.com/gargshi/mini_ide.git
 cd mini-ide
 ```
 
