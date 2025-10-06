@@ -118,7 +118,7 @@ function createWindow() {
 	mainWindow.loadFile("index.html");
 
 	const keybindings = loadKeybindings();
-	mainWindow.webContents.on("before-input-event", (event, input) => {		
+	mainWindow.webContents.on("before-input-event", (event, input) => {
 		if (matchesInput(input, keybindings.closeFile)) {
 			event.preventDefault();
 			mainWindow.webContents.send("close-file");
