@@ -1,18 +1,15 @@
 ## Mini IDE
 
-**Mini IDE** is a lightweight, cross-platform code editor that blends the flexibility of Electron with the power of Python.  
-It’s designed for quick scripting, prototyping, and learning — without the heavy overhead of full IDEs.
+**Mini IDE** is currently a lightweight, cross-platform text editor that blends the flexibility of Electron.  
+Future releases plan on expanding the functionality to an IDE
 
 ---
 
 ### Features
-
-- **Multi-language support** (via Python backend)  
-- **Built-in code execution** for Python scripts  
-- **Auto-save and session restore**  
+  
 - **Minimal and distraction-free interface**  
 - **Portable build support** — run directly from a ZIP or folder  
-- **Electron + Python integration** for easy extension  
+- **Electron** powered. 
 
 ---
 
@@ -60,6 +57,8 @@ npm start
 ```
 
 Electron will start and automatically deploy the app.
+
+To checkout the prebuilt exe, check out the [releases](https://github.com/gargshi/mini_ide/releases/latest) page. Download and extract the ZIP archive and run the Mini IDE.exe file.
 
 ---
 
