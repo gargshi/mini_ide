@@ -58,7 +58,7 @@ npm start
 
 Electron will start and automatically deploy the app.
 
-To checkout the prebuilt exe, check out the [releases](https://github.com/gargshi/mini_ide/releases/latest) page. Download and extract the ZIP archive and run the Mini IDE.exe file.
+To get the prebuilt portable binary, check out the [releases](https://github.com/gargshi/mini_ide/releases/latest) page. Download and extract the ZIP archive and run the Mini IDE.exe file.
 
 ---
 
