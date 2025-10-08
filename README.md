@@ -29,13 +29,13 @@ mini-ide/
 ```
 
 ---
-## 📦 Download Latest Version
+## Download Latest Version
 
 [![Download Latest](https://img.shields.io/github/v/release/gargshi/mini_ide?label=latest&color=blue)](https://github.com/gargshi/mini_ide/releases/latest)
 
 <!-- 👉 [**Click here to download the latest release**](https://github.com/gargshi/mini_ide/releases/latest) -->
 
-### ⚙️ Installation
+### Installation
 
 
 
@@ -91,6 +91,7 @@ The config folder contains files storing telemetry and keybindings in json forma
 | Version | Description                              |
 |---------|------------------------------------------|
 |  1.0.0  | basic file handling                      |
+|  1.0.1  | Bug fixes and KeyBinding Settings addition made possible. |
 
 ---
 

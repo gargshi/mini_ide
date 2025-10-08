@@ -20,6 +20,8 @@
 	--color-error: #ff5555;
 	--color-warning: #ffcc00;
 	--color-success: #33cc66;
+
+	--modal-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
 }
 
 html,
@@ -159,6 +161,12 @@ body {
 	margin-right: 4px;
 }
 
+.close {
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+}
+
 /* Status bar */
 #statusbar {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, monospace;
@@ -190,4 +198,47 @@ body {
 	padding-right: 10px;
 	border-right: 1px solid #464444;
 	/* display: none; */
+}
+
+.modal {
+	display: none;
+	/* hidden by default */
+	font-family:var(--modal-font);
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: var(--color-bg);
+	margin: 5% auto;
+	padding: 0;
+	border-radius: 8px;
+	width: 600px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+	background: black;
+	color: white;
+	padding: 0px 10px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modal-body {
+	padding: 20px;
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.modal .close{
+	font-size: 30px;
 }

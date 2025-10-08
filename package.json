@@ -29,6 +29,7 @@
       "main.js",
       "index.html",
       "renderer.js",
+      "keybindings-ui.js",
       "config/**",
       "style/**"
     ],

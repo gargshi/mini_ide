@@ -1,4 +1,5 @@
 const { ipcRenderer } = require("electron");
+const { loadKeybindingsEditor } = require("./keybindings-ui.js");
 const fs = require("fs");
 const path = require("path");
 
@@ -48,7 +49,7 @@ function renderTabs() {
 
 		// Close button
 		const closeBtn = document.createElement("span");
-		closeBtn.textContent = " ❌";
+		closeBtn.innerHTML = " &times;";
 		closeBtn.className = "close";
 		closeBtn.onclick = (e) => {
 			e.stopPropagation();
@@ -241,6 +242,44 @@ function renderDirectory(dirPath) {
 	sidebar.appendChild(rootList);
 }
 
+
+function openKeybindingsTab(filePath) {
+	// alert("inside openKeybindingsTab");
+	const modal = document.getElementById("keybindings-modal");
+	const container = document.getElementById("keybindings-container");
+	const closeBtn = document.getElementById("close-keybindings-modal");
+
+	if (!modal || !container) {
+		alert("⚠️ Modal elements not found in DOM!");
+		return;
+	}
+
+	if (!filePath){
+		alert("⚠️ filePath not found!");
+		return;
+	}
+
+	container.innerHTML = "";
+	// alert("checkpoint 1");
+	// alert("loadKeybindingsEditor type:", typeof loadKeybindingsEditor);
+	// alert("fpath :"+filePath);
+	// alert("checkpoint 2");
+	modal.style.display = "block";
+	// alert("checkpoint 3");
+	closeBtn.onclick = () => (modal.style.display = "none");
+	
+	window.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") modal.style.display = "none";
+	});
+	
+	window.addEventListener("click", (e) => {
+		if (e.target === modal) modal.style.display = "none";
+	});	
+	loadKeybindingsEditor(container, filePath);
+
+	// loadKeybindingsEditor(document.querySelector("#keybindings-container"));
+}
+
 // ===== IPC Events =====
 ipcRenderer.on("folder-opened", (event, dirPath) => renderDirectory(dirPath));
 
@@ -301,6 +340,14 @@ ipcRenderer.on("close-file", () => {
 		closeTab(activeFilePath);
 	}
 });
+
+
+ipcRenderer.on("open-keybindings-tab", (event,dirPath) => {
+	// alert("keybindings tab opening");
+	// ipcRenderer.send("opened-keybindings-tab");
+	openKeybindingsTab(dirPath);
+});	
+
 
 document.addEventListener("keydown", async (e) => {
 	if (e.key === "Delete" && selectedPath) {

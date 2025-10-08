@@ -76,8 +76,9 @@ function watchKeybindings() {
 	if (!fs.existsSync(keybindingsPath)) return;
 
 	fs.watchFile(keybindingsPath, { interval: 500 }, () => {
-		console.log("Keybindings updated!");
+		console.log("Keybindings updated, reloading menu");
 		const newBindings = loadKeybindings();
+		buildAppMenu(newBindings);
 	});
 }
 
@@ -104,6 +105,75 @@ function matchesInput(input, accelerator) {
 	);
 }
 
+function buildAppMenu(keybindings) {
+	const menu = Menu.buildFromTemplate([
+		{
+			label: "File",
+			submenu: [
+				{
+					label: "New File",
+					accelerator: keybindings.newFile,
+					click: () => mainWindow.webContents.send("new-file")
+				},
+				{
+					label: "Open",
+					accelerator: keybindings.openFile,
+					click: async () => {
+						const { canceled, filePaths } = await dialog.showOpenDialog();
+						if (!canceled && filePaths.length > 0) {
+							const filePath = filePaths[0];
+							const content = fs.readFileSync(filePath, "utf-8");
+							mainWindow.webContents.send("file-opened", { content, filePath });
+						}
+					}
+				},
+				{
+					label: "Save",
+					accelerator: keybindings.saveFile,
+					click: () => mainWindow.webContents.send("file-save")
+				},
+				{
+					label: "Save As",
+					accelerator: keybindings.saveFileAs,
+					click: async () => {
+						const { filePath } = await dialog.showSaveDialog();
+						if (filePath) mainWindow.webContents.send("file-save-as", filePath);
+					}
+				},
+				{
+					label: "Open Folder",
+					accelerator: keybindings.openFolder,
+					click: async () => {
+						const { canceled, filePaths } = await dialog.showOpenDialog({
+							properties: ["openDirectory"]
+						});
+						if (!canceled && filePaths.length > 0) {
+							const dirPath = filePaths[0];
+							mainWindow.webContents.send("folder-opened", dirPath);
+							saveConfig({ lastFolder: dirPath });
+						}
+					}
+				}
+			]
+		},
+		{
+			label: "Settings",
+			submenu: [
+				{
+					label: "Keybindings",
+					click: () => {
+						console.log("Menu: sending open-keybindings-tab");
+						console.log("Main window load in progress:", mainWindow.webContents.isLoading());
+						console.log(keybindingsPath);
+						mainWindow.webContents.send("open-keybindings-tab", keybindingsPath);
+					}
+				}
+			]
+		}
+	]);
+
+	Menu.setApplicationMenu(menu);
+}
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
@@ -135,68 +205,7 @@ function createWindow() {
 
 	// Load keybindings and send to renderer
 
-	const menu = Menu.buildFromTemplate([
-		{
-			label: "File",
-			submenu: [
-				{
-					label: "New File",
-					accelerator: keybindings.newFile,
-					click: () => {
-						mainWindow.webContents.send("new-file");
-					}
-				},
-				{
-					label: "Open",
-					accelerator: keybindings.openFile,
-					click: async () => {
-						const { canceled, filePaths } = await dialog.showOpenDialog();
-						if (!canceled && filePaths.length > 0) {
-							const filePath = filePaths[0];
-							const content = fs.readFileSync(filePath, "utf-8");
-							mainWindow.webContents.send("file-opened", { content, filePath });
-						}
-					}
-				},
-				{
-					label: "Save",
-					accelerator: keybindings.saveFile,
-					click: () => {
-						mainWindow.webContents.send("file-save");
-					}
-				},
-				{
-					label: "Save As",
-					accelerator: keybindings.saveFileAs,
-					click: async () => {
-						const { filePath } = await dialog.showSaveDialog();
-						if (filePath) {
-							mainWindow.webContents.send("file-save-as", filePath);
-						}
-					}
-				},
-				{
-					label: "Open Folder",
-					accelerator: keybindings.openFolder,
-					click: async () => {
-						const { canceled, filePaths } = await dialog.showOpenDialog({
-							properties: ["openDirectory"]
-						});
-						if (!canceled && filePaths.length > 0) {
-							const dirPath = filePaths[0];
-							mainWindow.webContents.send("folder-opened", dirPath);
-							saveConfig({ lastFolder: dirPath }); // store last folder
-						}
-					}
-				}
-			]
-		}
-	]);
-
-
-	Menu.setApplicationMenu(menu);
-
-
+	buildAppMenu(keybindings);
 
 	// Handle "request-save" (when renderer has no filePath yet)
 	ipcMain.on("request-save", async (event, content) => {
@@ -206,8 +215,27 @@ function createWindow() {
 			event.sender.send("file-saved", filePath);
 		}
 	});
+
+	ipcMain.on("opened-keybindings-tab", () => {
+		// openKeybindingsWindow();
+		console.log("recieved opened-keybindings-tab from renderer");
+	})
 	watchKeybindings();
 }
 
 app.whenReady().then(createWindow);
 
+function openKeybindingsWindow() {
+	const win = new BrowserWindow({
+		width: 500,
+		height: 400,
+		title: "Keybindings",
+		webPreferences: {
+			// preload: path.join(__dirname, "preload.js")
+			nodeIntegration: true,
+			contextIsolation: false
+		}
+	});
+
+	win.loadFile(path.join(__dirname, "keybindings.html"));
+}
