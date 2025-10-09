@@ -96,4 +96,5 @@ session/
 
 #deploy script
 publish.sh
-git_pushing_script.log
+git_pushing_script.log\n
+git_pushing_script_dev_mas_main_dev.log
