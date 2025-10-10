@@ -260,10 +260,7 @@ function openKeybindingsTab(filePath) {
 	}
 
 	container.innerHTML = "";
-	// alert("checkpoint 1");
-	// alert("loadKeybindingsEditor type:", typeof loadKeybindingsEditor);
-	// alert("fpath :"+filePath);
-	// alert("checkpoint 2");
+	
 	modal.style.display = "block";
 	// alert("checkpoint 3");
 	closeBtn.onclick = () => (modal.style.display = "none");

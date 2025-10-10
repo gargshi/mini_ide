@@ -203,7 +203,7 @@ body {
 .modal {
 	display: none;
 	/* hidden by default */
-	font-family:var(--modal-font);
+	font-family: var(--modal-font);
 	position: fixed;
 	z-index: 1000;
 	left: 0;
@@ -239,6 +239,115 @@ body {
 	overflow-y: auto;
 }
 
-.modal .close{
+.modal .close {
 	font-size: 30px;
+}
+
+.kb-line {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	max-width: fit-content;
+	/* background-color: gray; */
+	font-family: 'Segoe UI', 'Courier New', Courier, monospace;
+	font-size: 12px;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.kb-btn {
+	background: black;
+	color: whitesmoke;
+	padding: 4px;
+	border: 2px solid rgb(89, 89, 89);
+	width: 35px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.kb-btn-sep {
+	/* background:black; */
+	color: white;
+	/* padding-top: 10px; */
+}
+
+#bindingsTable {
+	border: 1px solid rgb(90, 90, 90);
+	width: 100%;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+#bindingsTable td {
+	padding: 5px;
+	border-bottom: 1px solid rgb(93, 93, 93);
+}
+
+#bindingsTable thead {
+	font-weight: 2;
+}
+
+
+.collapsible {
+	cursor: pointer;
+	display: none;
+	height: auto;
+	width: 100%;
+	gap: 2px;
+}
+
+.collapsible input {
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid black;
+	padding: 2px;
+}
+
+.collapsible input:active {
+	border: 2px solid orange;
+}
+
+.collapsible .update-btn {
+	font-size: 14px;
+	padding: 2px;
+	border-radius: 5px;
+}
+
+.keybindings-cell {
+	cursor: pointer;
+	display: table-cell;
+}
+
+#change-binding-btn {
+	cursor: pointer;
+	color: white;
+	background-color: rgb(59, 57, 57);
+	border-radius: 5px;
+	padding: 5px;
+	width: 200px;
+	border: 2px solid rgb(89, 89, 89);
+	font-family: "Segoe UI";
+}
+
+/* #change-binding-btn:hover {
+	color: black;
+	background-color: white;
+} */
+
+#change-binding-btn.ena {
+	color: white;
+	background-color: rgb(197, 115, 0);
+}
+
+#status-line-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "Segoe UI";
+}
+
+#status-line-container #status-line {
+	padding: 0px 10px;
+	font-size: 12px;
 }
