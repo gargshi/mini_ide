@@ -92,7 +92,7 @@ The config folder contains files storing telemetry and keybindings in json forma
 |---------|------------------------------------------|
 |  1.0.0  | basic file handling                      |
 |  1.0.1  | Bug fixes and KeyBinding Settings addition made possible. |
-|  1.0.2  | Improved the Keybinding settings layout and bug fixes. |
+|  1.0.2  | Improved the Keybinding settings layout and bug fixes.  |
 
 ---
 
