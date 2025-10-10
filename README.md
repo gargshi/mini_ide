@@ -67,7 +67,7 @@ To get the prebuilt portable binary, check out the [releases](https://github.com
 To build your distributable app:
 
 ```bash
-npm run build
+npm run build #for this app, we used npm run dist
 ```
 
 This will generate:
