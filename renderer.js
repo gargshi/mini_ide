@@ -345,6 +345,24 @@ ipcRenderer.on("open-keybindings-tab", (event,dirPath) => {
 	openKeybindingsTab(dirPath);
 });	
 
+ipcRenderer.on("open-about", () => {
+	// alert("Version 1.0.0\nThis is a simple text editor built with Electron.");
+	openAboutModal();
+})
+
+function openAboutModal() {
+	const modal = document.getElementById("about-modal");
+	const closeBtn = document.getElementById("close-about-modal");
+	modal.style.display = "block";
+	closeBtn.onclick = () => (modal.style.display = "none");
+	window.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") modal.style.display = "none";
+	});
+	window.addEventListener("click", (e) => {
+		if (e.target === modal) modal.style.display = "none";
+	});
+}
+
 
 document.addEventListener("keydown", async (e) => {
 	if (e.key === "Delete" && selectedPath) {

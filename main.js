@@ -169,6 +169,17 @@ function buildAppMenu(keybindings) {
 					}
 				}
 			]
+		},
+		{
+			label: "Help",
+			submenu: [
+				{
+					label: "About",
+					click: () => {
+						mainWindow.webContents.send("open-about");						
+					}
+				}
+			]
 		}
 	]);
 
